@@ -46,35 +46,35 @@ exports.createTask = async (req, res) => {
   }
 };
 
-// exports.getTaskById = async (req, res) => {
-//   try {
-//     const {id} = req.params
-//     if(id) {
-//       let task = await taskModel.findById(id)
-//       if(task) {
-//         return res.status(200).json({
-//           status: true,
-//           task
-//         })
-//       } else {
-//         return res.status(204).json({
-//           status: true,
-//           message: 'No task found with the given ID'
-//         })
-//       }
-//     } else {
-//       return res.status(400).json({
-//         status: false,
-//         message: 'Please provide task ID'
-//       })
-//     }
-//   } catch (err) {
-//     res.status(404).json({
-//       status: false,
-//       message: err,
-//     });
-//   }
-// };
+exports.getTaskById = async (req, res) => {
+  try {
+    const {id} = req.params
+    if(id) {
+      let task = await taskModel.findById(id)
+      if(task) {
+        return res.status(200).json({
+          status: true,
+          task
+        })
+      } else {
+        return res.status(204).json({
+          status: true,
+          message: 'No task found with the given ID'
+        })
+      }
+    } else {
+      return res.status(400).json({
+        status: false,
+        message: 'Please provide task ID'
+      })
+    }
+  } catch (err) {
+    res.status(404).json({
+      status: false,
+      message: err,
+    });
+  }
+};
 
 exports.deleteTask = async (req, res) => {
   try {
